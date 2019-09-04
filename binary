@@ -30,7 +30,7 @@ void main()
 			printf("%d found at location %d.\n", search, middle+1);
 			break;
 			}
-         	 else
+         	else
 			{
 			last = middle - 1;
 			middle = (first + last)/2;
