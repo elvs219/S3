@@ -1,0 +1,82 @@
+#include<stdio.h>
+#include<stdlib.h>
+void enqueue(int i, int data);
+int dequeue(int i);
+int front[5],rear[5],boundary[5];
+int size=10;
+int queue[10];
+void main()
+	{
+	int j,ch,data,d,n,i;
+	printf("Enter number of queues:");
+	scanf("%d",&n);
+	front[0]=rear[0]=boundary[0]=-1;
+	for(j=1;j<=n;j++)
+		{
+		front[j]=rear[j]=boundary[j]=((size-1)/n)*j;
+		}
+	while(1) 
+		{
+		printf("1.Insert element\n2.Delete element\n");
+		printf("Enter your choice:");
+		scanf("%d",&ch);
+		switch(ch)
+			{
+			case 1:
+				printf("Selected choice is insertion\n");
+				printf("enter element:");
+				scanf("%d",&data);
+				printf("enter queue number:");
+				scanf("%d",&i);
+				enqueue(i,data);
+				break;
+			case 2:
+				printf("Selected choice is deletion\n");
+				printf("enter queue number:");
+				scanf("%d",&i);
+				d=dequeue(i);
+				printf("%d is popped\n",d);
+				break;
+			}
+		}
+	}
+
+void enqueue(int i, int data)
+	{
+	if(rear[i]==boundary[i+1])
+		{
+		printf("overflow\n");
+		exit(0);
+		}
+	else	
+		{	
+		if(rear[i]==boundary[i])
+			{
+			front[i]++;
+			}
+		queue[++rear[i]]=data;
+		}
+	}
+
+int dequeue(int i)
+	{
+	int d;
+	if(rear[i]==boundary[i])
+		{
+		printf("underflow\n");
+		exit(0);
+		}
+	else		
+		{
+		d=queue[front[i]];
+		if(rear[i]==front[i])
+			{
+			rear[i]=front[i]=boundary[i];
+			}
+		else		
+			{
+			front[i]++;
+			}
+		}
+	return d;
+	}
