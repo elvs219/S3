@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+     {
+        int data;
+        struct node *addr;
+     };
+struct node *ptr[10],*tt,*p;
+
+struct node *createnode(int item)
+
+{
+    struct node *c;
+    c=(struct node *)malloc(sizeof(struct node ));
+    c->data=item;
+    c->addr=NULL;
+    return c;
+}
+
+
+void main()
+{
+	int i,j,n,na,nodevalue;
+	printf("Enter no. of nodes: ");
+        scanf("%d",&n);
+	struct node *head=NULL,*end;
+	for(i=0;i<n;i++)
+		{
+		printf("Enter no. of adjacent nodes of i: ");
+		scanf("%d",&na);
+			for(j=0;j<na;j++)
+				{
+				printf("value: ");
+				scanf("%d",&nodevalue);
+				tt=createnode(nodevalue);
+				if (head==NULL)
+					head=end=tt;
+				else
+					end->addr=tt;
+					end=tt;
+				}
+			ptr[i]=head;
+		head=NULL;
+		}
+	for(i=0;i<n;i++)
+		{
+		p=ptr[i];
+		printf("%d -> \t",i);
+		while(p!=NULL)
+			{
+			printf("%d->",p->data);
+			p=p->addr;
+			}
+			ptr[i]=head;
+		printf("\n");
+		}
+}
