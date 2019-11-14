@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+#include<string.h>
+void search(char str[],char pat[]);
+void delete(char str[] , char pat[]);
+
+int k=0;
+int lens,lenp;
+
+
+void main()
+	{
+		int choice;
+		char str[25],pat[25]; 
+		
+		int m=0;
+		
+		while(1)
+		{
+		printf("\nEnter choice\n 1.Search pattern\n 2.Delete pattern\n");
+		scanf("%d",&choice);
+		switch(choice)
+			{
+				case 1:
+					{	
+						printf("Enter string\n");
+						scanf("%s",&str);
+						printf("Enter pattern\n");
+						scanf("%s",&pat);
+						search(str,pat);
+						break;
+					}
+				case 2:
+					{
+						delete(str,pat);
+						printf("\nString after deletion is\n");
+						while(str[m]!='\0')
+							{
+								printf("%c",str[m]);
+								m++;
+							}
+						
+						break;
+					}
+			}
+		}
+		
+	}
+
+
+
+void search(char str[],char pat[])
+		{
+		
+		int i=0,j=0,flag;
+		
+		lens = strlen(str);
+		lenp = strlen(pat);
+		while(i<lens && j<lenp)
+			{
+				if(j==0)
+					{
+						k=i;
+					}
+				if(str[i]==pat[j])
+					{
+						i++;
+						j++;
+						flag=1;
+					}
+				else
+					{
+						i=k+1;
+						j=0;
+						flag=0;
+					}
+			}
+		if(flag==1)
+			{
+				printf("Pattern is present\n");
+			}
+		else
+			{
+				printf("Pattern is not present\n");
+
+	
+			}
+		}
+
+
+
+void delete(char str[] , char pat[])
+	{
+		int i=0;
+		i=k+lenp;
+		while(str[i]!='\0')
+			{
+
+				str[k]=str[i];
+				k++;
+				i++;
+			}
+		str[k]='\0';
+	}
+		
