@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+struct node *createnode(int item);
+void insert(int root,int item);
+
+void main()
+	{
+
+	int root,item,n,i=1;
+	printf("Enter number of elements");
+	scanf("%d",&n);
+	printf("Enter root");
+	printf("Enter other elements");
+	printf("Enter number of elements");
+	scanf("%d",&root);
+	while(i<=n)
+		{
+
+			insert(root,item);		
+			i++;
+
+		}
+
+	
+
+
+
+
+
+
+	}
+void insert(int root,int item)
+	{
+		tt=ctreatenode(item);
+		if(root==NULL)
+			{
+				root=tt;
+
+
+			}
+		else
+			{
+				ptr=root;
+				while(ptr!=NULL)
+					{
+						if(ptr->data >=item)
+							{
+								p=ptr;
+								ptr=ptr->lchild;
+
+							}
+						else
+							{
+								p=ptr;
+								ptr=ptr->rchild;
+
+							}
+					}
+				if(p->data>=item)
+					{
+						p->lchild==tt;
+					}
+				else	
+					{
+						p->lchild==tt;
+
+					}
+			}
+					
+
+	}
+
+
+struct node *createnode(int item)
+	{
+
+   		struct node *p;
+		p=(struct node *)malloc(sizeof(struct node ));
+		p->data=item;
+		p->addr=NULL;
+		return p;
+
+	}
+
+
+
+
+
