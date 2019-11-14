@@ -1,0 +1,42 @@
+#include<stdio.h>
+
+
+void main()
+	{
+		int n,ne,i,j,matrix[25][25],start,end;
+		printf("Enter number of nodes:");
+		scanf("%d",&n);
+		printf("Enter number of edges:");
+		scanf("%d",&ne);
+		for(i=0;i<n;i++)
+			{
+				for(j=0;j<n;j++)
+					{
+						matrix[i][j]=0;
+					}
+			}
+		for(i=0;i<ne;i++)
+			{
+
+				printf("Enter i th edge:");
+				printf("Enter start");
+				scanf("%d",&start);
+				printf("Enter end");
+				scanf("%d",&end);
+				matrix[start][end]=1;
+				matrix[end][start]=1;
+				
+
+				
+			}
+		
+		for(i=0;i<n;i++)
+			{
+				for(j=0;j<n;j++)
+					{
+						printf("%d	",matrix[i][j]);
+					}
+				printf("\n");
+			}
+	}
+						
